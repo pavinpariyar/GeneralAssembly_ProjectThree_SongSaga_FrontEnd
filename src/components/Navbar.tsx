@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { IUser } from "./interfaces/user"
+import { IUser } from "../interfaces/user"
 
 interface NavbarProps {
     user: null | IUser,
@@ -11,9 +11,9 @@ function Navbar({ user, setUser }: NavbarProps) {
     const navigate = useNavigate()
 
     function logout() {
-        localStorage.removeItem('token')
+        localStorage.removeItem("token")
         setUser(null)
-        navigate('/')
+        navigate('/home')
     }
 
     return (
@@ -22,7 +22,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                 <nav className="navbar is-dark">
                     <div className="container">
                         <div className="navbar-brand">
-                            <Link to="/" className="navbar-item">
+                            <Link to="/home" className="navbar-item">
                                 Home
                             </Link>
                             <Link to="/songs" className="navbar-item">

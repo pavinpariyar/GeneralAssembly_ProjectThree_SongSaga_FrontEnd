@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./components/Home"
 import Navbar from "./components/Navbar"
-import SongList from "/components/SongList"
 import Signup from "./components/Signup"
-import Login from "./components/login"
-import Createsong from "./components/createsong"
+// import Createsong from "./components/createsong"
 import { useEffect, useState } from 'react'
 import axios from "axios"
-import ShowSong from "./components/ShowSong"
+// import ShowSong from "./components/ShowSong"
+import Login from "./components/login"
+import SongList from "./components/SongList"
 
 function App() {
 
@@ -34,8 +34,8 @@ function App() {
         <Route path="/songs" element={<SongList />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login fetchUser={fetchUser} />} />
-        <Route path="/createsong" element={<Createsong />} />
-        <Route path="/songs/:id" element={<ShowSong user={user} />} />
+        {/* <Route path="/createsong" element={<Createsong />} /> */}
+        {/* <Route path="/song/:songId" element={<ShowSong user={user} />} /> */}
       </Routes>
     </Router>
   )

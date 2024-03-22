@@ -25,7 +25,7 @@ const Login = ({ fetchUser }: { fetchUser: Function }) => {
         try {
             e.preventDefault() //? Prevents the page from refreshing
             const resp = await axios.post('/api/login', formData)
-            localStorage.setItem('token', resp.data.token)
+            localStorage.setItem("token", resp.data.token)
             console.log(resp.data)
             fetchUser()
             navigate('/songs')
