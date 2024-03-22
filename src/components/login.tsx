@@ -62,7 +62,7 @@ const Login = ({ fetchUser }: { fetchUser: Function }) => {
                             value={formData.password}
                         />
                     </div>
-                    {errorMessage && <small className='has-tet-danger'>{errorMessage}</small>}
+                    {errorMessage && <small className='has-text-danger'>{errorMessage}</small>}
                 </div>
                 <button className="button">Submit</button>
             </form>
