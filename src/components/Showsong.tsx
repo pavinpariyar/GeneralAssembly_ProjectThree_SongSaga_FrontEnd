@@ -18,14 +18,13 @@ function ShowSong({ user }: { user: null | IUser }) {
     React.useEffect(() => {
         async function fetchSong() {
             try {
-                const resp = await axios.get(`/api/songs/${songId}`)
-                // const CatsData = await resp.json()
-                updateSong(resp.data)
-                console.log(resp.data)
+                const resp = await fetch(`/api/songs/${songId}`)
+                const SongsData = await resp.json()
+                updateSong(SongsData)
+                console.log(SongsData)
             }
             catch (e) {
             }
-
         }
         fetchSong()
     }, [])

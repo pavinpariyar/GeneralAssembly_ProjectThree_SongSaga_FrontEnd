@@ -4,7 +4,7 @@ import { ISong } from "../interfaces/songs"
 
 function SongCards({ _id, name, artist, album }: ISong) {
     return <div className="column is-one-quarter-desktop is-one-third-tablet">
-        <Link to={`/song/${_id}`}>
+        <Link to={`/songs/${_id}`}>
             <div className="card">
                 <div className="card-header">
                     <div className="card-header-title">{name}</div>
