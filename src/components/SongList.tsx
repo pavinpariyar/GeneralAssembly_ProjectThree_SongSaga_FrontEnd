@@ -24,27 +24,12 @@ function SongList() {
         setSearch(e.currentTarget.value)
     }
 
-    function nameSearch() {
+    function unifiedSearch() {
         return songs?.filter(library => {
-            return library.name.toLowerCase().includes(search.toLowerCase())
-        })
-    }
-
-    function artistSearch() {
-        return songs?.filter(library => {
-            return library.artist.toLowerCase().includes(search.toLowerCase())
-        })
-    }
-
-    function albumSearch() {
-        return songs?.filter(library => {
-            return library.album.toLowerCase().includes(search.toLowerCase())
-        })
-    }
-
-    function genreSearch() {
-        return songs?.filter(library => {
-            return library.genre.toLowerCase().includes(search.toLowerCase())
+            return library.name.toLowerCase().includes(search.toLowerCase()) ||
+                library.artist.toLowerCase().includes(search.toLowerCase()) ||
+                library.album.toLowerCase().includes(search.toLowerCase()) ||
+                library.genre.toLowerCase().includes(search.toLowerCase())
         })
     }
 
@@ -58,47 +43,14 @@ function SongList() {
         <div className="container">
             <input className="input mb-4" placeholder="Search..." onChange={handleChange} value={search} />
             <div className="columns is-multiline">
-                {nameSearch()?.map(song => {
+                {unifiedSearch()?.map(song => {
                     return <SongCards
                         key={song._id}
-                        name={song.name}
-                        artist={song.artist}
-                        album={song.album}
-                        genre={song.genre}
+                        {...song}
                     />
                 })}
             </div>
-            <div className="column is-multiline">
-                {artistSearch()?.map(song => {
-                    return <SongCards
-                        
-                        name={song.name}
-                        artist={song.artist}
-                        album={song.album}
-                        genre={song.genre}
-                    />
-                })}
-            </div>
-            <div className="column is-multiline">
-                {albumSearch()?.map(song => {
-                    return <SongCards
-                        name={song.name}
-                        artist={song.artist}
-                        album={song.album}
-                        genre={song.genre}
-                    />
-                })}
-            </div>
-            <div className="column is-multiline">
-                {genreSearch()?.map(song => {
-                    return <SongCards
-                        name={song.name}
-                        artist={song.artist}
-                        album={song.album}
-                        genre={song.genre}
-                    />
-                })}
-            </div>
+
         </div>
     </section>
 }
