@@ -7,5 +7,8 @@ export interface ISong {
     user: string, 
     genre: string, 
     albumCover: string, 
-    songLink: string
+    songLink: string,
+    
 }
+
+type setIsActive = boolean
