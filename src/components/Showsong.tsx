@@ -3,14 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ISong } from "../interfaces/songs";
 import YouTube, { YouTubeProps } from "react-youtube";
 import axios from 'axios';
-
+import { IUser } from "../interfaces/user";
 
 function ShowSong({ user }: { user: null | IUser }) {
+
     const [song, updateSong] = React.useState<ISong | null>(null);
+    const [isActive, setIsActive] = useState(true);
+
     const { songId } = useParams();
     const navigate = useNavigate();
-
-    const [isActive, setIsActive] = useState(true);
 
     const handleToggle = () => {
         setIsActive(false);
@@ -50,7 +51,7 @@ function ShowSong({ user }: { user: null | IUser }) {
         height: '390',
         width: '640',
         playerVars: {
-            autoplay: 1,
+            autoplay: 2, //? 1 autoplays when modal loads, 2 doesn't. 
         },
     };
 
@@ -59,13 +60,13 @@ function ShowSong({ user }: { user: null | IUser }) {
     console.log('song link...', song?.songLink)
 
     const youtubeID = song?.songLink?.split('v=')[1];
-    
+
     return (
         <section className="section">
-            {isActive &&
+            {/* {isActive && */} //? Able to close to the modal without this line of code. 
                 <div className="modal is-active">
                     <div className="modal-background" onClick={handleToggle}></div>
-                    <div className="modal-card">
+                    <div className="modal-card tempTag">
                         <header className="modal-card-head">
                             <p className="modal-card-title">{song?.name}</p>
                             <button className="delete" aria-label="close" onClick={handleToggle}></button>
@@ -83,7 +84,7 @@ function ShowSong({ user }: { user: null | IUser }) {
                                         <p className="subtitle has-text-centered">{song?.album}</p>
                                         <div>
                                             {/* Use songLink for the YouTube video ID */}
-                                            <YouTube videoId={youtubeID} />
+                                            <YouTube videoId={youtubeID} opts={opts} onReady={onPlayerReady} />
                                         </div>
                                     </div>
                                 </div>
@@ -91,12 +92,12 @@ function ShowSong({ user }: { user: null | IUser }) {
                         </section>
                         <footer className="modal-card-foot">
                             <div className="buttons">
-                                {song && (user._id === song.user) && <button className="button is-danger" onClick={deleteSong}>Delete Song!</button>}
+                                {song && (user?._id === song.user) && <button className="button is-danger" onClick={deleteSong}>Delete Song!</button>}
                             </div>
                         </footer>
                     </div>
                 </div>
-            }
+            {/* } */}
         </section>
     );
 }

@@ -8,7 +8,6 @@ import axios from "axios"
 import ShowSong from "./components/Showsong"
 import Login from "./components/Login"
 import SongList from "./components/SongList"
-import 'bulma/css/bulma.css';
 
 function App() {
 
