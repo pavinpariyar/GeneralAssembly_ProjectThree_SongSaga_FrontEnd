@@ -1,73 +1,65 @@
-import React, { SyntheticEvent, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { ISong } from "../interfaces/songs"
-import SongCards from "./SongCards"
-import { IUser } from "../interfaces/user"
-import axios from "axios"
-import YouTube, { YouTubeProps } from "react-youtube"
+import React, { SyntheticEvent, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ISong } from "../interfaces/songs";
+import YouTube, { YouTubeProps } from "react-youtube";
+import axios from 'axios';
+
 
 function ShowSong({ user }: { user: null | IUser }) {
+    const [song, updateSong] = React.useState<ISong | null>(null);
+    const { songId } = useParams();
+    const navigate = useNavigate();
 
-    const [song, updateSong] = React.useState<ISong | null>(null)
-    const { songId } = useParams()
-    const navigate = useNavigate()
-
-    const [isActive, setIsActive] = useState(true)
+    const [isActive, setIsActive] = useState(true);
 
     const handleToggle = () => {
         setIsActive(false);
         navigate('/songs'); // Optionally, navigate to another page when closing modal
-    }
-
-    React.useEffect(() => {
-        console.log("The song page has mounted")
-    }, [])
-
+    };
 
     React.useEffect(() => {
         async function fetchSong() {
             try {
-                const resp = await fetch(`/api/songs/${songId}`)
-                const SongsData = await resp.json()
-                updateSong(SongsData)
-                console.log(SongsData)
-            }
-            catch (e) {
+                const resp = await fetch(`/api/songs/${songId}`);
+                const SongsData = await resp.json();
+                updateSong(SongsData);
+            } catch (e) {
+                // Handle error
             }
         }
-        fetchSong()
-    }, [])
+        fetchSong();
+    }, [songId]); // Added songId as a dependency
 
     async function deleteSong(e: SyntheticEvent) {
         try {
-            const token = localStorage.getItem('token')
+            const token = localStorage.getItem('token');
             await axios.delete('/api/songs/' + songId, {
                 headers: { Authorization: `Bearer ${token}` }
-            })
-            navigate('/songs')
+            });
+            navigate('/songs');
         } catch (e: any) {
-            console.log(e.response.data)
+            console.log(e.response.data);
         }
     }
-    console.log(user)
-    console.log(song)
 
     const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-        // access to player in all event handlers via event.target
         event.target.pauseVideo();
-    }
-
+    };
 
     const opts: YouTubeProps['opts'] = {
         height: '390',
         width: '640',
         playerVars: {
-            // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
         },
     };
 
+    console.log(user, user?.id)
+    console.log(song)
+    console.log('song link...', song?.songLink)
 
+    const youtubeID = song?.songLink?.split('v=')[1];
+    
     return (
         <section className="section">
             {isActive &&
@@ -78,7 +70,7 @@ function ShowSong({ user }: { user: null | IUser }) {
                             <p className="modal-card-title">{song?.name}</p>
                             <button className="delete" aria-label="close" onClick={handleToggle}></button>
                         </header>
-                        <section className="modal-card-body">
+                        <section className="modal-card-body px-3">
                             <div className="container">
                                 <div className="columns">
                                     <div className="column is-one-third">
@@ -87,11 +79,11 @@ function ShowSong({ user }: { user: null | IUser }) {
                                         </figure>
                                     </div>
                                     <div className="column">
-                                        <h1 className="title">{song?.artist}</h1>
-                                        {/* <p className="subtitle">{song?.artist}</p> */}
-                                        <p className="subtitle">{song?.album}</p>
+                                        <h1 className="title has-text-centered">{song?.artist}</h1>
+                                        <p className="subtitle has-text-centered">{song?.album}</p>
                                         <div>
-                                            <YouTube videoId='_1By7t5fd6I' opts={opts} onReady={onPlayerReady} />
+                                            {/* Use songLink for the YouTube video ID */}
+                                            <YouTube videoId={youtubeID} />
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +98,7 @@ function ShowSong({ user }: { user: null | IUser }) {
                 </div>
             }
         </section>
-    )
+    );
 }
 
-export default ShowSong
+export default ShowSong;

@@ -11,7 +11,7 @@ function Home() {
             <div className="hero-body has-text-centered">
                 <div className="container">
                     <p className="title">SongSaga</p>
-                    <h1>Testing</h1>
+                    <h1>The Open-Source Music Library</h1>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/R_rUYuFtNO4?si=cO-zWlQpFh9yVzno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
