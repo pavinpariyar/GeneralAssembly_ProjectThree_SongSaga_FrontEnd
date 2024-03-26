@@ -9,8 +9,7 @@ function SongList() {
 
     const [songs, setSongs] = useState<Songs>(null)
     const [search, setSearch] = useState('')
-    const [isActive, setIsActive] = useState(false)
-    const [modalData, setModalData] = useState<ISong | null>(null)
+
 
     useEffect(() => {
         async function fetchSongs() {
@@ -46,24 +45,13 @@ function SongList() {
         <div className="container">
             <input className="input mb-4" placeholder="Search..." onChange={handleChange} value={search} />
             <div className="columns is-multiline">
-                <div className={isActive ? 'modal is-active' : 'modal'}>
-                    <div className="modal-background"></div>
-                    <div className="modal-content">
-                        <p className="image is-4by3" onClick={() => setIsActive(true)}>
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="" />
-                        </p>
-                    </div>
-                    <button className="modal-close is-large" aria-label="close" onClick={() => setIsActive(false)}>Close Button!!!</button>
-                </div>
                 {unifiedSearch()?.map(song => {
                     return <SongCards
                         key={song._id}
-                        setIsActive={setIsActive}
                         {...song}
                     />
                 })}
             </div>
-
         </div>
     </section>
 }
