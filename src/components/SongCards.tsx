@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { ISong } from "../interfaces/songs"
 
-function SongCards({ _id, name, artist, album, albumCover }: ISong) {
+function SongCards({ _id, name, artist, album, albumCover, genre }: ISong) {
     return (
         <div className="column is-one-quarter-desktop is-one-third-tablet">
             <Link to={`/songs/${_id}`}>
@@ -20,6 +20,8 @@ function SongCards({ _id, name, artist, album, albumCover }: ISong) {
                         </div>
                         <div className="content">
                             {album}
+                            <br></br>
+                            {genre}
                         </div>
                     </div>
                 </div>
