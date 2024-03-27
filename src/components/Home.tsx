@@ -1,4 +1,5 @@
 import React from "react"
+import Logo from '../photos/logo.png'
 
 function Home() {
     React.useEffect(() => {
@@ -10,7 +11,7 @@ function Home() {
         <section className="hero is-link is-fullheight-with-navbar is-link">
             <div className="hero-body has-text-centered">
                 <div className="container">
-                    <img className="title" src="../photos/logo"></img>
+                    <img src={Logo} alt="Logo" />
                     <h2> Unlock the Melody: <br>
                     </br>The Open-Source Music Library</h2>
 
