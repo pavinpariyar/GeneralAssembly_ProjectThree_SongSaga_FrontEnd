@@ -17,7 +17,7 @@
 }
 
 body {
-    background-color: rgb(53, 75, 75);
+    background-color: rgb(246, 146, 24);
 }
 
 .logo-emoji {
@@ -98,6 +98,7 @@ $modal-content-width: 65rem;
 
 // ! example on how to customize, skip to section "Add your own Bulma styles":
 // https://bulma.io/documentation/customize/with-sass-cli/
+
 
 // ? Import bulma, all customizations should live above this line.
 @import "../../node_modules/bulma/bulma.sass";

@@ -19,7 +19,7 @@ function Navbar({ user, setUser }: NavbarProps) {
     return (
         <>
             <header>
-                <nav className="navbar is-dark">
+                <nav className="navbar is-light">
                     <div className="container">
                         <div className="navbar-brand">
                             <Link to="/home" className="navbar-item">
