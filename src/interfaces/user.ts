@@ -4,3 +4,5 @@ export interface IUser {
   email: string,
   id: string
 }
+
+//interface to fix typescript errors

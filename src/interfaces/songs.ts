@@ -12,3 +12,5 @@ export interface ISong {
 }
 
 type setIsActive = boolean
+
+//interfaces to fix typescript errors
