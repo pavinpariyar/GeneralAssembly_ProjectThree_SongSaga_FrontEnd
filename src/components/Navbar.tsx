@@ -39,6 +39,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                                 Create a Song
                             </Link>}
                             {user && <button onClick={logout} className="button navbar-item is-ghost">Logout</button>}
+                            <h2 className='navbar-end has-text-light is-size-3 px-2'>The Open-Source Music Library</h2>
                         </div>
                     </div>
                 </nav>
