@@ -58,6 +58,7 @@ function ShowSong({ user }: { user: null | IUser }) {
     console.log(user, user?.id)
     console.log(song)
     console.log('song link...', song?.songLink)
+    console.log('user is ', user?._id)
 
     const youtubeID = song?.songLink?.split('v=')[1];
 
