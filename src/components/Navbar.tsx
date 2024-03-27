@@ -19,23 +19,23 @@ function Navbar({ user, setUser }: NavbarProps) {
     return (
         <>
             <header>
-                <nav className="navbar is-light">
+                <nav className="navbarColor">
                     <div className="container">
                         <div className="navbar-brand">
-                            <Link to="/home" className="navbar-item">
+                            <Link to="/home" className="navbar-item has-text-white">
                                 Home
                             </Link>
-                            <Link to="/songs" className="navbar-item">
+                            <Link to="/songs" className="navbar-item has-text-white">
                                 Music Library
                             </Link>
                             {/* // ! Show and hide appropriate routes for member/visitor */}
-                            {!user && <Link to="/signup" className="navbar-item">
+                            {!user && <Link to="/signup" className="navbar-item has-text-white">
                                 Signup
                             </Link>}
-                            {!user && <Link to="/login" className="navbar-item">
+                            {!user && <Link to="/login" className="navbar-item has-text-white">
                                 Login
                             </Link>}
-                            {user && <Link to="/createsong" className="navbar-item">
+                            {user && <Link to="/createsong" className="navbar-item has-text-white">
                                 Create a Song
                             </Link>}
                             {user && <button onClick={logout} className="button navbar-item is-ghost">Logout</button>}
