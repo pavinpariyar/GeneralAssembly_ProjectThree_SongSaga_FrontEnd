@@ -6,7 +6,7 @@ import CreateSong from "./components/CreateSong"
 import { useEffect, useState } from 'react'
 import axios from "axios"
 import ShowSong from "./components/Showsong"
-import Login from "./components/Login"
+import Login from "./components/login"
 import SongList from "./components/SongList"
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     const token = localStorage.getItem('token');
     const resp = await axios.get('/api/user', {
       headers: { Authorization: `Bearer ${token}` }
-  
+
 
     })
     console.log(resp)

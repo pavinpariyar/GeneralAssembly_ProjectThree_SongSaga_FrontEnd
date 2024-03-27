@@ -101,10 +101,16 @@ section.section {
     background-color: #ef994d;
 }
 
+#collage {
+background-image: url("../components/assets/collage.png");
+// background-repeat: repeat;
+}
+
 $footer-background-color: #363636;
 $footer-padding: 2rem 1.5rem;
 $box-padding: 1rem;
 $modal-content-width: 65rem;
+
 
 // ! example on how to customize, skip to section "Add your own Bulma styles":
 // https://bulma.io/documentation/customize/with-sass-cli/
