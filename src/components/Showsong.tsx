@@ -35,7 +35,7 @@ function ShowSong({ user }: { user: null | IUser }) { // Functional component Sh
     async function deleteSong(e: SyntheticEvent) { // Function to handle song deletion
         try {
             const token = localStorage.getItem('token'); // Getting token from localStorage
-            await axios.delete('${baseUrl}/songs' + songId, { // Sending DELETE request to delete song
+            await axios.delete(`${baseUrl}/songs/` + songId, { // Sending DELETE request to delete song
                 headers: { Authorization: `Bearer ${token}` } // Attaching authorization token to request headers
             });
             navigate('/songs'); // Navigating to the '/songs' route after successful deletion

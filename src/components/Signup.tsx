@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from 'react' // Importing necessary modules from React
 import axios from 'axios' // Importing Axios for HTTP requests
 import { useNavigate } from 'react-router-dom' // Importing useNavigate hook from React Router
+import { baseUrl } from "../config" // Importing base URL from config
 
 const Signup = () => { // Functional component Signup
 
@@ -31,7 +32,7 @@ const Signup = () => { // Functional component Signup
     async function handleSubmit(e: SyntheticEvent) { // Function to handle form submission
         try {
             e.preventDefault() //? Prevents the page from refreshing
-            const resp = await axios.post('/api/signup', formData) // Sending a POST request to the signup API with form data
+            const resp = await axios.post(`${baseUrl}/signup`, formData) // Sending a POST request to the signup API with form data
             console.log(resp.data) // Logging the response data to the console
             navigate('/login') // Navigating to the '/login' route after successful signup
         } catch (e: any) {

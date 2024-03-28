@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from 'react' // Importing necessary modules from React
 import axios from 'axios' // Importing Axios for HTTP requests
 import { useNavigate } from 'react-router-dom' // Importing useNavigate hook from React Router
+import { baseUrl } from "../config" // Importing base URL from config
 
 const Login = ({ fetchUser }: { fetchUser: Function }) => { // Functional component Login receiving props
 
@@ -24,7 +25,7 @@ const Login = ({ fetchUser }: { fetchUser: Function }) => { // Functional compon
     async function handleSubmit(e: SyntheticEvent) { // Function to handle form submission
         try {
             e.preventDefault() //? Prevents the page from refreshing
-            const resp = await axios.post('/api/login', formData) // Sending a POST request to the login API with form data
+            const resp = await axios.post(`${baseUrl}/login`, formData) // Sending a POST request to the login API with form data
             localStorage.setItem("token", resp.data.token) // Storing the token in localStorage
             console.log(resp.data) // Logging the response data to the console
             fetchUser() // Executing the fetchUser function passed as prop
