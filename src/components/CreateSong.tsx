@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from "react" // Importing necessary modules from React
 import axios from 'axios' // Importing Axios for HTTP requests
 import { useNavigate } from "react-router-dom" // Importing useNavigate hook from React Router
+import { baseUrl } from "../config" // Importing base URL from config
 
 function CreateSong() {
 
@@ -28,7 +29,7 @@ function CreateSong() {
         const token = localStorage.getItem('token') // Getting the token from localStorage
 
         // ! Here we attach the token to the request to the API.
-        const resp = await axios.post('${baseUrl}/songs', formData, { // Sending a POST request to the API with form data and authorization token
+        const resp = await axios.post(`${baseUrl}/songs`, formData, { // Sending a POST request to the API with form data and authorization token
             headers: { Authorization: `Bearer ${token}` } // Attaching authorization token to the request headers
         })
         console.log(resp.data) // Logging the response data to the console
@@ -115,7 +116,7 @@ function CreateSong() {
                         />
                     </div>
                 </div>
-                <button className="button">Submit</button>
+                <button className="button" onClick={handleSubmit}>Submit</button>
             </form>
         </div>
     </div>
