@@ -97,7 +97,7 @@ function CreateSong() {
                         <input
                             className="input"
                             type="text"
-                            name={'albumcover'}
+                            name={'albumCover'}
                             onChange={handleChange}
                             value={formData.albumCover}
                         />
@@ -109,7 +109,7 @@ function CreateSong() {
                         <input
                             className="input"
                             type="text"
-                            name={'songlink'}
+                            name={'songLink'}
                             onChange={handleChange}
                             value={formData.songLink}
                         />
