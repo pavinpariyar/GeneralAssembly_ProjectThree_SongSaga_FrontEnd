@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react" // Importing necessary modules from React
 import SongCards from "./SongCards" // Importing SongCards component
 import { ISong } from "../interfaces/songs" // Importing ISong interface
+import { baseUrl } from "../config" // Importing base URL from config
 
 type Songs = null | Array<ISong> // Defining type for Songs
 
