@@ -38,7 +38,9 @@ function CreateSong() {
 
     console.log(formData) // Logging the current form data to the console
 
-    return <div className="section"> {/* Rendering the form */}
+    //Rendering the form 
+
+    return <div className="section">
         <div className="container">
             <form onSubmit={handleSubmit}>
                 <div className="field">
@@ -53,11 +55,70 @@ function CreateSong() {
                         />
                     </div>
                 </div>
-                {/* Similar input fields for Artist, Album, Genre, Album Cover, and Song Link */}
-                <button className="button">Submit</button> {/* Submit button */}
+                <div className="field">
+                    <label className="label">Artist</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'artist'}
+                            onChange={handleChange}
+                            value={formData.artist}
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Album</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'album'}
+                            onChange={handleChange}
+                            value={formData.album}
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Genre</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'genre'}
+                            onChange={handleChange}
+                            value={formData.genre}
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Album Cover Image</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'albumcover'}
+                            onChange={handleChange}
+                            value={formData.albumCover}
+                        />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">YouTube Song Link</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'songlink'}
+                            onChange={handleChange}
+                            value={formData.songLink}
+                        />
+                    </div>
+                </div>
+                <button className="button">Submit</button>
             </form>
         </div>
     </div>
 }
 
-export default CreateSong // Exporting the CreateSong component
+export default CreateSong
