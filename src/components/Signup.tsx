@@ -42,7 +42,10 @@ const Signup = () => { // Functional component Signup
     // console.log(formData)
     console.log(errorData) // Logging error data to console
 
-    return <div className="section"> {/* Rendering the signup form */}
+
+    //Rendering the sign up form 
+
+    return <div className="section">
         <div className="container">
             <form onSubmit={handleSubmit}>
                 <div className="field">
@@ -55,14 +58,52 @@ const Signup = () => { // Functional component Signup
                             onChange={handleChange}
                             value={formData.username}
                         />
-                        {errorData.username && <small className='has-text-danger'>{errorData.username}</small>} {/* Rendering error message if exists */}
+                        {errorData.username && <small className='has-text-danger'>{errorData.username}</small>}
                     </div>
                 </div>
-                {/* Similar input fields for Email, Password, and Confirm Password */}
-                <button className="button">Submit</button> {/* Submit button */}
+                <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            name={'email'}
+                            onChange={handleChange}
+                            value={formData.email}
+                        />
+                        {errorData.email && <small className="has-text-danger">{errorData.email}</small>}
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="password"
+                            name={'password'}
+                            onChange={handleChange}
+                            value={formData.password}
+                        />
+                        {errorData.password && <small className="has-text-danger">{errorData.password}</small>}
+                    </div>
+                </div>
+                <div className="field">
+                    <label className="label">Confirm password</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="password"
+                            name={'passwordConfirmation'}
+                            onChange={handleChange}
+                            value={formData.passwordConfirmation}
+                        />
+                        {errorData.passwordConfirmation && <small className="has-text-danger">{errorData.passwordConfirmation}</small>}
+                    </div>
+                </div>
+                <button className="button">Submit</button>
             </form>
         </div>
     </div>
 }
 
-export default Signup // Exporting the Signup component
+export default Signup
