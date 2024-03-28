@@ -28,7 +28,7 @@ function CreateSong() {
         const token = localStorage.getItem('token') // Getting the token from localStorage
 
         // ! Here we attach the token to the request to the API.
-        const resp = await axios.post('/api/songs', formData, { // Sending a POST request to the API with form data and authorization token
+        const resp = await axios.post('${baseUrl}/songs', formData, { // Sending a POST request to the API with form data and authorization token
             headers: { Authorization: `Bearer ${token}` } // Attaching authorization token to the request headers
         })
         console.log(resp.data) // Logging the response data to the console

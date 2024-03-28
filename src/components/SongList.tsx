@@ -11,7 +11,7 @@ function SongList() { // Functional component SongList
 
     useEffect(() => { // Effect hook to fetch songs data
         async function fetchSongs() {
-            const resp = await fetch('/api/songs') // Fetching songs data from API
+            const resp = await fetch('${baseUrl}/songs') // Fetching songs data from API
             const data = await resp.json() // Parsing response data
             setSongs(data) // Setting songs state with fetched data
         }

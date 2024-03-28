@@ -4,6 +4,7 @@ import { ISong } from "../interfaces/songs"; // Importing ISong interface
 import YouTube, { YouTubeProps } from "react-youtube"; // Importing YouTube component and its props
 import axios from 'axios'; // Importing Axios for HTTP requests
 import { IUser } from "../interfaces/user"; // Importing IUser interface
+import { baseUrl } from "../config"; // Importing base URL from config
 
 function ShowSong({ user }: { user: null | IUser }) { // Functional component ShowSong receiving user prop
 
@@ -21,7 +22,7 @@ function ShowSong({ user }: { user: null | IUser }) { // Functional component Sh
     React.useEffect(() => { // Effect hook to fetch song data
         async function fetchSong() {
             try {
-                const resp = await fetch(`/api/songs/${songId}`); // Fetching song data from API
+                const resp = await fetch(`${baseUrl}/songs/${songId}`); // Fetching song data from API
                 const SongsData = await resp.json(); // Parsing response data
                 updateSong(SongsData); // Updating song state with fetched data
             } catch (e) {
@@ -34,7 +35,7 @@ function ShowSong({ user }: { user: null | IUser }) { // Functional component Sh
     async function deleteSong(e: SyntheticEvent) { // Function to handle song deletion
         try {
             const token = localStorage.getItem('token'); // Getting token from localStorage
-            await axios.delete('/api/songs/' + songId, { // Sending DELETE request to delete song
+            await axios.delete('${baseUrl}/songs' + songId, { // Sending DELETE request to delete song
                 headers: { Authorization: `Bearer ${token}` } // Attaching authorization token to request headers
             });
             navigate('/songs'); // Navigating to the '/songs' route after successful deletion
