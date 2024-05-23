@@ -2,7 +2,7 @@
 
 ## Link to site
 
-![Song Saga](https://songsaga2.netlify.app/home)
+[Song Saga](https://songsaga2.netlify.app/home)
 
 ## Overview
 
