@@ -19,7 +19,7 @@ tsconfig.node.json
 node_modules
 dist
 Project-4.code-workspace
-vite.config.ts
+
 
 
 # Editor directories and files
