@@ -1,7 +1,7 @@
 # Project Three - SongSaga 🎵📚
 
 [songsaga2.netlify.app
-](https://songsaga2.netlify.app/)
+](https://songsaga2.netlify.app/home)
 
 ## Table of Contents
 
